@@ -37,6 +37,7 @@
     <Compile Include="Zadaca - Fudbaleri\NationalTeam.cs" />
     <Compile Include="Zadaca - Fudbaleri\Club.cs" />
     <Compile Include="Zadaca - Fudbaleri\FudbaleriVoid.cs" />
+    <Compile Include="Zadaca - Planeti\PlanetaVoid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Zadaca - Fudbaleri\" />
