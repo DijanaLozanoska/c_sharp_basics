@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.809.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "proba", "proba.csproj", "{1FF4037D-50A0-4237-8A82-C89D201502D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oop_vezbi", "oop_vezbi.csproj", "{1FF4037D-50A0-4237-8A82-C89D201502D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
