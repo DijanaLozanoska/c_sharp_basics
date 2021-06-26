@@ -38,10 +38,12 @@
     <Compile Include="Zadaca - Fudbaleri\Club.cs" />
     <Compile Include="Zadaca - Fudbaleri\FudbaleriVoid.cs" />
     <Compile Include="Zadaca - Planeti\PlanetaVoid.cs" />
+    <Compile Include="Zadaca - NBA\NBAVoid.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Zadaca - Fudbaleri\" />
     <Folder Include="Zadaca - Planeti\" />
+    <Folder Include="Zadaca - NBA\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
