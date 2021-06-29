@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Zadaca-Planeti\" />
+    <None Remove="Zadaca-Fudbaleri\" />
+    <None Remove="Zadaca-NBA\" />
+    <None Remove="Zadaca-Planeti %28copy%29\" />
+    <None Remove="12.Employee\" />
+    <None Remove="19. Zadaca - NBA\19. Zadaca - NBA\" />
+    <None Remove="13. Zadaca - Sportski Ekipi\" />
+    <None Remove="19 %28copy%29. Zadaca - NBA\" />
+    <None Remove="12 %28copy%29. Zadaca - Selling Sunset\" />
+    <None Remove="10 %28copy%29. Zadaca - Avtomobil\" />
+    <None Remove="12 %28copy%29. Zadaca - Nedviznina\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Zadaca-Planeti\" />
+    <Folder Include="20. Zadaca - Fudbaleri\" />
+    <Folder Include="19. Zadaca - NBA\" />
+    <Folder Include="6. Zadaca - Ureduvanje Dom\" />
+    <Folder Include="15. Zadaca - Employee\" />
+    <Folder Include="13. Zadaca - Sportski Ekipi\" />
+    <Folder Include="12. Zadaca - Nedviznina\" />
+    <Folder Include="10. Zadaca - Avtomobil\" />
+    <Folder Include="9. Zadaca - Naslovna Stranica\" />
+    <Folder Include="12 %28copy%29. Zadaca - Nedviznina\" />
+  </ItemGroup>
+</Project>
