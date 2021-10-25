@@ -1,0 +1,87 @@
+﻿@model proba6.Models.Product
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+
+<div class="row col-md-8 offset-md-2 px-0">
+    <h2 class="text-dark">Add New Product</h2>
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="p-4 rounded border">
+            <div asp-validation-summary="ModelOnly" class="text-danger">
+
+            </div>
+            <h3>@ViewBag.message</h3>
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="ProductName"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="ProductName" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductName" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="ProductDescription"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="ProductDescription" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductDescription" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="ProductPrice"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="ProductPrice" class="form-control" />
+                </div>
+                <span asp-validation-for="ProductPrice" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="ProductPicture"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="ProductPicture" class="form-control" type="file" />
+                </div>
+                <span asp-validation-for="ProductPicture" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="CategoryId"></label>
+                </div>
+                <div class="col-5">
+                    <select asp-for="CategoryId" asp-items="ViewBag.Categories" class="form-control"> </select>
+                </div>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group row">
+                <div class="col-2">
+                    <label asp-for="IsAvailable"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="IsAvailable" class="" type="checkbox" />
+                </div>
+                <span asp-validation-for="IsAvailable" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <a asp-action="Index" class="btn btn-success">Back to List</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+    @section Scripts{
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+

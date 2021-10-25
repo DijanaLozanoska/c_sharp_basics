@@ -1,0 +1,43 @@
+﻿@using proba6.Models;
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Order</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="CreateOrder" class="btn btn-info"><i class="fas fa-plus"></i>&nbsp; New Tag Name</a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped border">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(c => c.Id)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderNo</td>
+                <td>
+                    <partial name="_TagPageButtonPartial" model="@item.Id" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

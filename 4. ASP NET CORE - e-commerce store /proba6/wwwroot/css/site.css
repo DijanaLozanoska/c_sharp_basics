@@ -1,0 +1,306 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
+
+html,
+body {
+    font-family: "Oswald", Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 1em;
+}
+
+.navbar-brand-logo {
+    color: #000000;
+    letter-spacing: 20px;
+    font-size: 100%;
+}
+
+.navbar-icons {
+    color: #000000;
+    display: block;
+    margin-left: 1.25rem;
+}
+
+.navbar-icons-text {
+    color: #661a19;
+}
+
+.navbar-form input.form-control[type="text"]:focus:not([readonly]) {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+}
+
+.navbar-form input.form-control[type="text"] {
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid black;
+}
+
+.navbar-input-neon:focus,
+.navbar-input-neon:active {
+    outline: none !important;
+    box-shadow: none;
+}
+
+.navbar-input-neon:focus,
+.navbar-input-neon:active {
+    outline: #8064a2 !important;
+    box-shadow: #8064a2 !important;
+}
+
+.navbar-dashed-border:hover,
+.navbar-dashed-border:active,
+.navbar-dashed-border:focus {
+    outline: none !important;
+    box-shadow: none;
+    background-image: repeating-linear-gradient( -1deg, #000000, #000000 7px, transparent 7px, transparent 12px, #000000 12px ), repeating-linear-gradient( 89deg, #000000, #000000 7px, transparent 7px, transparent 12px, #000000 12px ), repeating-linear-gradient( 179deg, #000000, #000000 7px, transparent 7px, transparent 12px, #000000 12px ), repeating-linear-gradient( 269deg, #000000, #000000 7px, transparent 7px, transparent 12px, #000000 12px );
+    background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+    background-position: 0 0, 0 0, 100% 0, 0 100%;
+    background-repeat: no-repeat;
+}
+
+
+.featured-product {
+    padding-top: 20px;
+    background-image: url(../Images/featured-product.jpg);
+    width: 100%;
+    /*    height: 100%;*/
+    height: 1000px !important;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.featured-product-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    /* z-index: 15; */
+    letter-spacing: 2px;
+}
+
+.featured-product-content h2 {
+    color: #fff;
+    font-size: 50px; /* 8rem */
+    font-weight: 100;
+    margin-bottom: 3rem;
+    line-height: 1;
+}
+
+.transparent-btn {
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 1rem 5rem;
+    font-size: 1.5rem;
+}
+
+.transparent-btn:hover {
+   background-color: rgba(205, 194, 159, 0.4);
+}
+
+.h1-featured-product {
+    margin: 40px auto 40px;
+}
+
+.p-featured-product {
+    margin: 40px auto 40px;
+}
+
+.table-admin > :not(:last-child) > :last-child > * {
+    background: #D9B3BC;
+}
+
+.table-admin tbody > tr > td {
+    background: rgba(245, 240, 240, 0.4);
+    border-top: 10px solid white;
+    vertical-align: middle;
+    padding: 12px 8px;
+}
+
+.table-admin thead > tr > th {
+    border-top: 1px solid #e2d3cd;
+    border-bottom: 1px solid #e2d3cd;
+    padding-bottom: 5px;
+}
+
+
+#video {
+    /* padding-bottom: 10px; ova ne go faka  */
+    border: 1px solid black;
+}
+
+.video-container {
+    padding-left: 11px;
+}
+
+#about-container {
+    background-color: rgba(245, 240, 240, 0.4);
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.about-class {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.about-tca {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.terms-privacy {
+    color: brown;
+}
+
+.terms-privacy:hover {
+        color: rgba(107, 36, 38, 0.4);
+}
+
+
+section.events {
+    background: #f5f5f5;
+}
+
+section.events .row > div {
+    padding: 0;
+}
+
+section.events .profile {
+    background-size: cover;
+    position: relative;
+    min-height: 400px;
+    padding: 40px;
+    z-index: 1;
+    color: #fff;
+}
+
+section.events .profile::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: -1;
+}
+
+section.events .profile ul.date {
+    font-weight: 700;
+}
+
+section.events .profile ul.date li.day {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    border: 2px solid #fff;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+section.events .profile ul.date li.month {
+    font-size: 2em;
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+    section.events .profile ul.date li.month span {
+        font-size: 0.8em;
+        display: block;
+    }
+
+section.events .details {
+    background: #fff;
+    height: 400px;
+    /* overflow: auto; */
+    padding: 50px;
+}
+
+section.events .details h3 {
+    font-size: 1.5em;
+    color: #333;
+    font-weight: 700;
+}
+
+section.events .details h4 {
+    font-size: 1.15em;
+}
+
+section.events .details p {
+    margin: 20px 0 !important;
+}
+
+section.events .details a {
+    padding: 0 40px !important;
+}
+
+@media (max-width: 768px) {
+    section.events .profile {
+        min-height: 100px;
+}
+
+section.events .details {
+    height: auto;
+}
+}
+
+section.gallery .item {
+    position: relative;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+
+    section.gallery .item img {
+        height: 100%;
+        width: 100%;
+        display: block;
+    }
+
+
+@media (max-width: 480px) {
+    section.gallery .col-custom-12 {
+        width: 100% !important;
+    }
+
+    section.gallery .col-custom-12 .item {
+        min-height: 200px;
+    }
+}
+
+.item-zoom {
+    transition: transform .2s;  /* Animation */
+/*    width: 200px;
+    height: 200px;*/
+/*    margin: 0 auto;*/
+}
+
+.item-zoom:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+/* [1] The container */
+.img-hover-zoom {
+    /*height: 300px;*/ /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+}
+
+    /* [2] Transition property for smooth transformation of images */
+    .img-hover-zoom img {
+        transition: transform .5s ease;
+    }
+
+    /* [3] Finally, transforming the image when container gets hovered */
+    .img-hover-zoom:hover img {
+        transform: scale(1.5);
+    }

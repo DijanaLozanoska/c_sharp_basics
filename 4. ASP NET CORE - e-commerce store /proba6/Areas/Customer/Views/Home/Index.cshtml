@@ -1,0 +1,50 @@
+﻿@using proba6.Models;
+
+@model List<Product>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+<br />
+<br />
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">
+                        <label style="font-size: 23px;color: steelblue">@product.ProductName</label>
+                    </h4>
+                </div>
+                <img src="~/@product.ProductPicture" alt="Card Image" class="card-img-top" style="height: 300px;" />
+
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <label style="font-size: 20px;color: #a51313"><b>Price : @product.ProductPrice</b></label>
+                        </div>
+                        <a asp-action="Detail" asp-controller="Home" asp-route-id="@product.Id" class="btn btn-primary pull-right btn-outline-info">Details</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    }
+</div>
+
+
+<div>
+   @*da se dodade paged list tuka*@
+    @*PagedListRenderOptionsBase*@
+</div>
+
