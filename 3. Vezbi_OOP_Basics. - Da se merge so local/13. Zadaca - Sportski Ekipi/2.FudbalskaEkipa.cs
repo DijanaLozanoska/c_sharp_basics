@@ -11,29 +11,31 @@ public class FudbalskaEkipa : Ekipa
 
     public int NereseniNatprevari { get; set; }
 
+    public Ekipa Ekipa { get; set; }
+
+
+
     public FudbalskaEkipa()
     {
 
 
     }
 
-
-    public FudbalskaEkipa(string inputime, int inputpobedi, int inputporazi, int nereseni, List<Ekipa> fudbalskaekipa)
-        : base(inputime, inputpobedi, inputporazi)
+    public FudbalskaEkipa(string inputime, int inputpobedi, int inputporazi, int nereseni)
+        :base(inputime, inputpobedi, inputporazi)
     {
         NereseniNatprevari = nereseni;
-        Ekipi = fudbalskaekipa;
     }
 
-    public int Poeni()
+    public override int Poeni()
     {
-        return Pobedi * 3;
+        return Ekipa.Poeni() * 3 + NereseniNatprevari;
     }
 
     public override void Pecati()
     {
-        base.Pecati();
-        Console.WriteLine($"Nereseni {NereseniNatprevari} Pobedi {Poeni()}");
+        Ekipa.Pecati();
+        Console.WriteLine($" Nereseni: {NereseniNatprevari},\n Poeni: {Poeni()}");
     }
 }
 

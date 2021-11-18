@@ -8,9 +8,6 @@ public class Ekipa
     public int Pobedi { get; set; }
     public int Porazi { get; set; }
 
-    public List<Ekipa> Ekipi { get; set; }
-
-
     public Ekipa()
     {
 
@@ -19,18 +16,19 @@ public class Ekipa
 
     public Ekipa(string inputime, int inputpobedi, int inputporazi)
     {
-
         Ime = inputime;
         Pobedi = inputpobedi;
         Porazi = inputporazi;
-
-
     }
 
+    public virtual int Poeni()
+    {
+        return Pobedi;
+    }
 
     public virtual void Pecati()
     {
-        Console.WriteLine($"Ime: {Ime} , Pobedi: {Pobedi}, Porazi: {Porazi} ");
+        Console.WriteLine($" Ime: {Ime},\n Pobedi: {Pobedi},\n Porazi: {Porazi}");
     }
 
 }
