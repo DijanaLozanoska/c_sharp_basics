@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 public class Category
 {
-    public string Name { get; set; }
+    public string Name { get; set; } = "unnamed";
 
     public Category()
     {
-        Name = "unnamed";
+        
     }
 
     public void Print()
     {
-        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Category: {Name}");
     }
 }

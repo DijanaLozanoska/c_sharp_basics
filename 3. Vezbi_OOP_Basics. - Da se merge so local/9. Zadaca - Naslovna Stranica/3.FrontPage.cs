@@ -4,32 +4,30 @@ using System.Collections.Generic;
 public class FrontPage
 {
 
-    public NewsArticle NaslovnaVest { get; set; }
+    public NewsArticle NewsArticle { get; set; }
 
-    public float Price { get; set; }
+    public float Price { get; set; } = 0;
 
-    public int EditionNumber { get; set; }
+    public int EditionNumber { get; set; } = 0;
 
 
     public FrontPage()
     {
-        NaslovnaVest = new NewsArticle();
-        Price = 0;
-        EditionNumber = 0;
 
     }
 
     public FrontPage(NewsArticle newsarticle, float price, int editionnumber)
     {
-        NaslovnaVest = newsarticle;
+        NewsArticle = newsarticle;
         Price = price;
         EditionNumber = editionnumber;
     }
 
+
     public void Print()
     {
         Console.WriteLine($"Price: {Price}, Edition Number {EditionNumber} ");
-        NaslovnaVest.Print();
+        NewsArticle.Print();
 
     }
 

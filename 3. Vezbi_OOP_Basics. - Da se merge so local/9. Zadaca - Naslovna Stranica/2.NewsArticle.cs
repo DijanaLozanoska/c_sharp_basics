@@ -3,27 +3,26 @@ using System.Collections.Generic;
 
 public class NewsArticle
 {
-    public Category KategorijaNaVest { get; set; }
+    public Category Category { get; set; }
 
-    public string Naslov { get; set; }
+    public string Title { get; set; } = "untitled";
 
 
     public NewsArticle()
     {
-        KategorijaNaVest = new Category();
-        Naslov = "untitled";
+
     }
 
-    public NewsArticle(Category kategorijanavest, string naslov)
+    public NewsArticle(Category kategorijanavest, string title)
     {
-        KategorijaNaVest = kategorijanavest;
-        Naslov = naslov;
+        Category = kategorijanavest;
+        Title = title;
     }
 
     public void Print()
     {
-        Console.WriteLine($"Naslov: {Naslov}");
-        KategorijaNaVest.Print();
+        Console.WriteLine($"Title: {Title}");
+        Category.Print();
 
     }
 
