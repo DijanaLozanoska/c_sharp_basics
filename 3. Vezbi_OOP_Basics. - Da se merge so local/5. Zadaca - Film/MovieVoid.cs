@@ -91,7 +91,7 @@ namespace Vezbi_OOP_Basics
             var godina_filter = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\n");
 
-            static void pecati_po_godina(List<Movie> movies, int godina)
+            static void PecatiPoGodina(List<Movie> movies, int godina)
             {
                 foreach (var movie in movies)
                 {
@@ -104,8 +104,8 @@ namespace Vezbi_OOP_Basics
             }
 
             Console.WriteLine($"*** Lista na filmovi od {godina_filter} ***");
-            pecati_po_godina(readline_lista_na_filmovi, godina_filter);
-            Console.WriteLine("Done");
+            Console.WriteLine("\n");
+            PecatiPoGodina(readline_lista_na_filmovi, godina_filter);
         }
     }
 }
