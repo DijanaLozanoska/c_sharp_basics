@@ -3,28 +3,23 @@ using System.Collections.Generic;
 
 public class Person
 {
-    public string Ime { get; set; }
+    public string Ime { get; set; } = "not specified";
 
-    public string Prezime { get; set; }
+    public string Prezime { get; set; } = "not specified";
 
     public Person()
     {
-        Ime = "not specified";
-        Prezime = "not specified";
+
     }
 
     public Person(string ime, string prezime)
     {
-
         Ime = ime;
         Prezime = prezime;
-
     }
-
 
     public void Print()
     {
         Console.WriteLine($"{Ime} {Prezime}");
-
     }
 }
