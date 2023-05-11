@@ -1,0 +1,46 @@
+﻿@model Shop1.Models.Category
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<br />
+<br />
+<div class="row col-md-10 offset-md-1 text-uppercase d-flex align-items-center">
+    <div class="text">
+        <h2 class="text-md-start text-center mb-md-0" style="letter-spacing: 10px">
+            Create Category
+        </h2>
+        <hr />
+    </div>
+    <form asp-action="Create" method="post">
+        <br />
+        <div class="row mx-0 pb-3">
+            <div class="col-md-8 offset-md-2 px-1 ms-lg-0 ms-md-0">
+                <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+                <h5 class="text-danger text-md-start text-center">@ViewBag.message</h5>
+                <div class="form-group border-dark row">
+                    <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                        <h5 class="pt-lg-2"> <label asp-for="CategoryName"></label></h5>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                        <input asp-for="CategoryName" class="form-control rounded-0 border-dark shadow-none" type="text" id="inputToUpper" onkeyup="myFunction()" />
+                    </div>
+                    <span asp-validation-for="CategoryName" class="col-12 text-danger rounded-0 border-dark"></span>
+                </div>
+                <br />
+                <div class="profile pb-2 text-md-start text-center">
+                    <input type="submit" class="btn-black btn-black1" value="SAVE" />
+                    <a asp-action="Index" class="btn-black btn-black1"> Back to List </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

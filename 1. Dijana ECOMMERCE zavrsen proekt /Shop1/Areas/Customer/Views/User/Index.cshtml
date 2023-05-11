@@ -1,0 +1,83 @@
+﻿@using Shop1.Models;
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<br />
+<div class="row col-md-8 offset-md-2 px-0">
+    <div class="col-8 px-0">
+        <h2 class="text-dark text-uppercase" style="font-size:30px;letter-spacing: 10px;">User List</h2>
+    </div>
+    <div class="col-md-4 text-uppercase d-flex justify-content-end">
+        <a asp-action="Create" class="btn btn-light text-black navbar-dashed-border rounded-0"><i class="fas fa-plus"></i>&nbsp; Add New User</a>
+    </div>
+</div>
+
+
+<br />
+<br />
+
+
+<div class="row mx-0">
+    <div class="col-md-8 offset-md-2 px-1">
+        <table class="table text-muted table-admin">
+            <thead>
+                <tr class="text-center text-dark text-uppercase">
+                    <th>UserName</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Status</th>
+                    <th>Additional actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr class="text-center text-dark text-uppercase">
+                    <td>@item.UserName</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    @if (item.LockoutEnd > DateTime.Now && item.LockoutEnd != null)
+                    {
+                        <td>Inactive</td>
+                        <td>
+                            <a class="btn btn-transparent text-black navbar-dashed-border rounded-0" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <a class="btn btn-transparent text-black navbar-dashed-border rounded-0" asp-action="Active" asp-route-id="@item.Id">Unlock User</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>Active</td>
+                        <td>
+                            <a class="btn btn-transparent text-black navbar-dashed-border rounded-0" asp-action="Edit" asp-route-id="@item.Id">Edit </a>
+                            <a class="btn btn-transparent text-black navbar-dashed-border rounded-0" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                            <a class="btn btn-transparent text-black navbar-dashed-border rounded-0" asp-action="Lockout" asp-route-id="@item.Id">Lock User</a>
+                        </td>
+                    }
+                </tr>
+                }
+        </table>
+            </div>
+
+            @section scripts{
+                <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+                <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+                </script>
+            }

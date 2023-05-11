@@ -1,0 +1,92 @@
+﻿@using Shop1.Models;
+
+@*@model List<Product>*@
+@*@model IEnumerable<Product>*@
+
+@model Shop1.Models.MergeProductCategory
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<br />
+<br />
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+
+<div class="container text-lowercase d-flex justify-content-center">
+    <ul class="list-group list-group-horizontal">
+        <li class="list-group-item border-0">
+            <a href="@Url.Action("Index", "Home", new { id = 0 }, null);" class="btn-black btn-black1">Show All</a>
+
+            @foreach (var c in Model.CategoryMerged)
+            {
+                <a href="@Url.Action("Index", "Home", new {id = c.Id } )" class="btn-black btn-black1">@c.CategoryName</a>
+            }
+
+            <form  asp-area="Admin" asp-controller="Product" asp-action="Filter" class="d-flex pt-2" role="search">
+                <input   placeholder="search for products.."
+                       aria-label="Search" id="productName"  name="searchString" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-transparent text-black rounded-0" type="submit">
+                    <img src="//cdn.shopify.com/s/files/1/2429/0827/t/26/assets/search-icon.svg?v=9453961010760361060">Search
+                </button>
+            </form>
+
+            @*<form class="" asp-area="Admin" asp-controller="Product" asp-action="Filter">
+                <input id="productName" name="searchString" class="form-control me-2 navbar-input-neon"
+                       type="text"
+                       placeholder="search for products.."
+                       aria-label="Search">
+                <button class="btn btn-transparent text-black rounded-0 navbar-dashed-border"
+                        type="submit">
+                    <img src="//cdn.shopify.com/s/files/1/2429/0827/t/26/assets/search-icon.svg?v=9453961010760361060">
+                </button>
+            </form>*@
+        </li>
+    </ul>
+</div>
+
+<section style="background-color: #fff;">
+    <div class="container py-5">
+        <div class="row">
+            @*@foreach (var product in Model)*@
+            @foreach (var product in Model.ProductMerged)
+
+            {
+                <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+                    <div class="card">
+                        <div class="d-flex justify-content-between img-responsive1">
+                            @*style="width: 35px; height: 35px;">*@
+                            <img src="@FileLocation.RetriveFileFromFolder@product.ProductPicture"
+                                 class="card-img-top picture3"
+                                 alt="" />
+
+                            <img src="@FileLocation.RetriveFileFromFolder@product.ProductPictureBack"
+                                 class="card-img-top picture4"
+                                 alt="" />
+                        </div>
+                        <div class="card-body px-0">
+                            <div class="d-flex justify-content-between mb-2">
+                                <h5 class="mb-0">@product.ProductName</h5>
+                                <h5 class="text-dark mb-0">$ @product.ProductPrice</h5>
+                            </div>
+
+                            <div class="d-flex justify-content-between mb-5">
+                                <!-- <p class="text-muted mb-0">Available: <span class="fw-bold">6</span></p> -->
+                                <div class="me-auto text-warning">
+                                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 25 25" style="width: 10px !important; height: 10px !important;"><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></polygon><path d="" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></path><defs><linearGradient id="bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa" x1="99.99%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color: rgb(0, 0, 0); stop-opacity: 1;"></stop><stop offset="1%" style="stop-color: rgb(220, 220, 220); stop-opacity: 1;"></stop></linearGradient></defs></svg>
+                                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 25 25" style="width: 10px !important; height: 10px !important;"><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></polygon><path d="" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></path><defs><linearGradient id="bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa" x1="99.99%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color: rgb(0, 0, 0); stop-opacity: 1;"></stop><stop offset="1%" style="stop-color: rgb(220, 220, 220); stop-opacity: 1;"></stop></linearGradient></defs></svg>
+                                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 25 25" style="width: 10px !important; height: 10px !important;"><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></polygon><path d="" style="fill: url(&quot;#bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa&quot;) !important;"></path><defs><linearGradient id="bv_inline_ratings_star_filled_0_99.99_dw0biy0jDa" x1="99.99%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color: rgb(0, 0, 0); stop-opacity: 1;"></stop><stop offset="1%" style="stop-color: rgb(220, 220, 220); stop-opacity: 1;"></stop></linearGradient></defs></svg>
+                                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 25 25" style="width: 10px !important; height: 10px !important;"><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_4_45.56_EX9Ddae4bx&quot;) !important;"></polygon><path d="" style="fill: url(&quot;#bv_inline_ratings_star_filled_4_45.56_EX9Ddae4bx&quot;) !important;"></path><defs><linearGradient id="bv_inline_ratings_star_filled_4_45.56_EX9Ddae4bx" x1="45.56%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color: rgb(0, 0, 0); stop-opacity: 1;"></stop><stop offset="1%" style="stop-color: rgb(220, 220, 220); stop-opacity: 1;"></stop></linearGradient></defs></svg>
+                                    <svg focusable="false" xmlns="http://www.w3.org/2000/svg" width="10px" height="10px" viewBox="0 0 25 25" style="width: 10px !important; height: 10px !important;"><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_4_0.00_FwROobD2jk&quot;) !important;"></polygon><polygon points="25 9.12 15.5669599 9.12 12.512219 0 9.40860215 9.12 0 9.12 7.55131965 14.856 4.47214076 24 12.512219 18.216 20.5522972 24 17.4731183 14.856" style="fill: url(&quot;#bv_inline_ratings_star_filled_4_0.00_FwROobD2jk&quot;) !important;"></polygon><path d="" style="fill: url(&quot;#bv_inline_ratings_star_filled_4_0.00_FwROobD2jk&quot;) !important;"></path><defs><linearGradient id="bv_inline_ratings_star_filled_4_0.00_FwROobD2jk" x1="0.00%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color: rgb(0, 0, 0); stop-opacity: 1;"></stop><stop offset="1%" style="stop-color: rgb(220, 220, 220); stop-opacity: 1;"></stop></linearGradient></defs></svg>
+                                </div>
+                            </div>
+                            <div class="d-grid mb-2">
+                                <a style="text-decoration: none;" asp-action="Details" asp-controller="Home" asp-route-id="@product.Id"
+                                   class="btn btn-outline-dark rounded-0 menu-button">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

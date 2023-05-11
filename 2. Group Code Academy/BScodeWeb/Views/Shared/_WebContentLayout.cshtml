@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Web Content Page";
+}
+
+<div class="container-fluid" style="padding-top: 73px">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-sm-3 px-md-4 px-lg-5 pt-5 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center justify-content-center align-items-sm-start text-primary" id="sideBar">
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "WebContent" &&
+                            ViewContext.RouteData.Values["Action"].ToString() == "About"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="WebContent" asp-action="About">
+                            <i class="fs-2 bi-credit-card-2-front-fill"></i> <span class="ms-1 d-none d-sm-inline">About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "WebContent" &&
+                            ViewContext.RouteData.Values["Action"].ToString() == "Contact"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="WebContent" asp-action="Contact">
+                            <i class="fs-2 bi-mailbox2"></i> <span class="ms-1 d-none d-sm-inline">Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "WebContent" &&
+                            ViewContext.RouteData.Values["Action"].ToString() == "Projects"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="WebContent" asp-action="Projects">
+                            <i class="fs-2 bi-file-code-fill"></i> <span class="ms-1 d-none d-sm-inline">Projects</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "WebContent" &&
+                            ViewContext.RouteData.Values["Action"].ToString() == "Events"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="WebContent" asp-action="Events">
+                            <i class="fs-2 bi-calendar-event-fill"></i> <span class="ms-1 d-none d-sm-inline">Events</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "WebContent" &&
+                            ViewContext.RouteData.Values["Action"].ToString() == "Trainers"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="WebContent" asp-action="Trainers">
+                            <i class="fs-2 bi-file-person-fill"></i> <span class="ms-1 d-none d-sm-inline">Trainers</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>

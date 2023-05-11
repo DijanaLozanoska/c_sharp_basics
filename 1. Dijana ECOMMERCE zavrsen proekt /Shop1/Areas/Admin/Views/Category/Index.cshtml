@@ -1,0 +1,78 @@
+﻿@using Shop1.Models;
+@model IEnumerable<Category>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<br />
+<div class="row col-md-10 offset-md-1 text-uppercase d-flex align-items-center">
+    <div class="col-md-12 col-lg-8 pt-md-1">
+        <h2 class="text-dark text-sm-center text-md-center text-lg-start mb-lg-0" style="letter-spacing: 10px;">Category List</h2>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4">
+        <a asp-action="Create"
+           class="text-decoration-none d-block btn-black btn-black1">
+            <i class="fas fa-plus"></i>&nbsp;
+            Add New Category
+        </a>
+    </div>
+</div>
+<br />
+<br />
+<div class="row mx-0">
+    <div class="col-md-8 offset-md-2 px-1">
+        <table class="table text-muted">
+            <thead>
+                <tr class="text-center text-dark text-uppercase">
+                    <th>
+                        <h5>@Html.DisplayNameFor(c => c.CategoryName)</h5>
+                    </th>
+                    <th>
+                        <h5>Additional actions</h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="align-middle">
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center text-dark text-uppercase">
+                        <td>@item.CategoryName</td>
+                        <td>
+                            <a class="col-sm-10 col-md-6 col-lg-4 btn-white btn-white1" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                            <span class="px-sm-0 px-md-0 px-lg-2"></span>
+                            <a class="col-sm-10 col-md-6 col-lg-4 btn-white btn-white1" asp-action="Delete" asp-route-id="@item.Id">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}
+
+
+
+

@@ -1,0 +1,16 @@
+﻿@{
+    Layout = "_Layout1";
+}
+
+<div class="row" style="margin-top: 5vh">
+    <h2 class="d-flex justify-content-center">Web content for @ViewData["Header"]</h2>
+    <div class="d-flex">
+        <a class="btn btn-primary flex-fill" asp-area="" asp-controller="@(ViewContext.RouteData.Values["Controller"].ToString())" asp-action="Add">Add</a>
+        <a class="btn btn-success flex-fill" asp-area="" asp-controller="@(ViewContext.RouteData.Values["Controller"].ToString())" asp-action="Edit">Edit</a>
+        <a class="btn btn-warning flex-fill" asp-area="" asp-controller="@(ViewContext.RouteData.Values["Controller"].ToString())" asp-action="List">List</a>
+    </div>
+</div>
+
+<div>
+    @RenderBody()
+</div>

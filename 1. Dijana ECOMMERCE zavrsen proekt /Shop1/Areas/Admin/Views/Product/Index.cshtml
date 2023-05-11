@@ -1,0 +1,129 @@
+﻿@using Shop1.Models;
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Index";
+
+    Pager pager = new Pager();
+    int pageNo = 0;
+    if (ViewBag.Pager != null)
+    {
+        pager = ViewBag.Pager;
+        pageNo = pager.CurrentPage;
+    }
+}
+<br />
+<br />
+<br />
+
+<div class="row col-md-10 offset-md-1 text-uppercase d-flex align-items-center">
+    <div class="col-md-12 col-lg-8 pt-md-1">
+        <h2 class="text-dark text-sm-center text-md-center text-lg-start mb-lg-0" style="letter-spacing: 10px;">Product List</h2>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-4">
+        <a asp-action="Create"
+           class="text-decoration-none d-block btn-black btn-black1">
+            <i class="fas fa-plus"></i>&nbsp;
+            Add New Product
+        </a>
+    </div>
+</div>
+<br />
+<br />
+<div class="row mx-0">
+    <div class="px-1">
+        <table class="table text-muted">
+            <thead>
+                <tr class="text-center text-dark text-uppercase">
+                    <th class="">
+                        <h5>@Html.DisplayNameFor(c => c.ProductPicture)</h5>
+                    </th>
+                    <th>
+                        <h5>@Html.DisplayNameFor(c => c.ProductName)</h5>
+                    </th>
+                    <th class="">
+                        <h5>@Html.DisplayNameFor(c => c.ProductDescription)</h5>
+                    </th>
+                    <th class="">
+                        <h5>@Html.DisplayNameFor(c => c.ProductPrice)</h5>
+                    </th>
+                    <th>
+                        <h5>@Html.DisplayNameFor(c => c.IsAvailable)</h5>
+                    </th>
+                    <th>
+                        <h5>@Html.DisplayNameFor(c => c.CategoryId)</h5>
+                    </th>
+                    <th>
+                        <h5>Additional actions</h5>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="align-middle">
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center text-dark text-uppercase">
+                        <td class="">
+                            <img class="img-thumbnail" src="@FileLocation.RetriveFileFromFolder@item.ProductPicture" asp-append-version="true" alt="@item.ProductName" style="max-width: 150px" />
+                        </td>
+                        <td>@item.ProductName</td>
+                        <td class="">
+                            @item.ProductDescription
+                        </td>
+                        <td class="">
+                            @item.ProductPrice
+                        </td>
+                        <td>
+                            @if (@item.IsAvailable == true)
+                            {
+
+                                <span class="">Available</span>
+                            }
+                            else if (@item.IsAvailable != true)
+                            {
+                                @*<span class="badge bg-white rounded-0 text-uppercase text-black" style="border-style: dashed; border-radius: 5px;">Out of stock</span>*@
+                                <span class="blink_me">Out of stock</span>
+                            }
+                        </td>
+                        <td>@item.Categories.CategoryName</td>
+                        <td>
+                            <partial name="_ButtonPartial" model="@item.Id" />
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<partial name="_Pager" model="@pager" />
+
+@*edit icon*@
+@*<svg width="44" height="44" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"><defs><path d="M17 22a5 5 0 1 1 10.001.001A5 5 0 0 1 17 22Zm15-2s-.966-.141-2.341-.318a7.897 7.897 0 0 0-.602-1.453c.848-1.102 1.428-1.886 1.428-1.886l-2.828-2.828s-.784.583-1.881 1.431a7.85 7.85 0 0 0-1.452-.603C24.144 12.964 24 12 24 12h-4s-.141.966-.318 2.341a7.897 7.897 0 0 0-1.453.602c-1.102-.848-1.886-1.428-1.886-1.428l-2.828 2.828s.583.784 1.431 1.881a7.856 7.856 0 0 0-.601 1.446C12.962 19.852 12 20 12 20v4s.964.145 2.343.324c.152.503.353.985.597 1.441-.85 1.107-1.425 1.892-1.425 1.892l2.828 2.828s.785-.579 1.886-1.428c.456.244.938.446 1.441.598C19.852 31.038 20 32 20 32h4s.145-.964.324-2.343a7.894 7.894 0 0 0 1.441-.597c1.107.85 1.892 1.425 1.892 1.425l2.828-2.828s-.579-.785-1.428-1.887c.245-.457.447-.941.6-1.446C31.036 24.144 32 24 32 24v-4Z" id="settings_svg__a"></path></defs><use fill="#2D2D2D" xlink:href="#settings_svg__a" fill-rule="evenodd"></use></svg>*@
+
+@*delete icon*@
+@*<i class="fa fa-undo" aria-hidden="true"></i>&nbsp;*@
+
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
+
+    <script>
+
+
+        $(function(){
+            var save = '@TempData["save"]'
+            if(save!='') {
+                alertify.success(save);
+            }
+            var edit = '@TempData["edit"]'
+            if(edit!='') {
+                alertify.success(edit);
+            }
+            var del = '@TempData["delete"]'
+            if (del!='') {
+                alertify.error(del);
+            }
+        })
+    </script>
+}

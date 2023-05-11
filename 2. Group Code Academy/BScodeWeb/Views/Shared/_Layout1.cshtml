@@ -1,0 +1,36 @@
+﻿@{ 
+    Layout = "_Layout";
+    ViewData["Title"] = "Web Content Page";
+}
+<div class="container-fluid" style="padding-top: 73px">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-sm-3 px-md-4 px-lg-5 pt-5 text-white min-vh-100">
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center justify-content-center align-items-sm-start text-primary" id="sideBar">
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "AboutWebContent"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="AboutWebContent" asp-action="Add">
+                            <i class="fs-2 bi-credit-card-2-front-fill"></i> <span class="ms-1 d-none d-sm-inline">About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item @(
+                            ViewContext.RouteData.Values["Controller"].ToString() == "ContactWebContent"
+                            ? "activeSidebar" : "")"
+                           asp-area="" asp-controller="ContactWebContent" asp-action="Add">
+                            <i class="fs-2 bi-mailbox2"></i> <span class="ms-1 d-none d-sm-inline">Contact</span>
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</div>
