@@ -6,7 +6,6 @@
     ViewData["Title"] = "Order Details";
 }
 @{
-
     List<Product> products = HttpContextAccessor.HttpContext.Session.Get<List<Product>>("products");
 
     if (products == null)
@@ -14,104 +13,191 @@
         products = new List<Product>();
     }
 
+    int count = 0;
+    List<Product> productsc = HttpContextAccessor.HttpContext.Session.Get<List<Product>>("products");
+    if (productsc == null)
+    {
+        productsc = new List<Product>();
+    }
+    count = productsc.Count();
 }
 <br />
 <br />
 <br />
-<h2 class="text-info">Order Details</h2>
-<form asp-action="" method="post" enctype="multipart/form-data">
-    <div class="p-4 rounded border row">
-        <div asp-validation-summary="ModelOnly" class="text-danger">
-
-        </div>
-        <div class="col-6">
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Name"></label>
-                </div>
-                <div class="col-8">
-                    <input type="hidden" asp-for="Id" />
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="PhoneNo"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="PhoneNo" class="form-control" />
-                    <span asp-validation-for="PhoneNo" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Address"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Address" class="form-control" />
-                    <span asp-validation-for="Address" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="Email"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-            </div>
-            <br />
-            <div class="form-group row">
-                <div class="col-4">
-                    <label asp-for="OrderDate"></label>
-                </div>
-                <div class="col-8">
-                    <input asp-for="OrderDate" type="text" readonly="readonly" class="form-control" />
-                    <span asp-validation-for="OrderDate" class="text-danger"></span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="col-6">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in products)
-                    {
-                        <tr>
-                            <td>
-                                <img src="~/@item.ProductPicture" height="100px" width="150px" />
-                            </td>
-                            <td>@item.ProductName</td>
-                            <td>@item.ProductPrice</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-            <div class="text-right">
-                <h3>Total Price : @products.Sum(c => c.ProductPrice)</h3>
-            </div>
-            <div class="form-group text-right">
-                <input type="submit" value="Place Order" class="btn btn-success" />
-            </div>
-        </div>
-
-
+<div class="row">
+    <div style="display: table; margin: auto;">
+        <span class="step step_complete"> <a href="#" class="check-bc">Cart</a> <span class="step_line step_complete"> </span> <span class="step_line backline"> </span> </span>
+        <span class="step step_complete"> <a href="#" class="check-bc">Checkout</a> <span class="step_line "> </span> <span class="step_line step_complete"> </span> </span>
+        <span class="step_thankyou check-bc step_complete">Thank you</span>
     </div>
-</form>
+</div>
+
+<div class="row d-flex justify-content-center align-items-center h-100 text-uppercase">
+    <div class="col-12">
+        <div class="card card-registration card-registration-2 rounded-0" style="border-radius: 15px;">
+            <div class="card-body p-0">
+                <div class="row g-0">
+                    <div class="col-lg-8 bg-grey rounded-0">
+                        <div class="p-5">
+                            <div class="d-flex justify-content-between align-items-center mb-5">
+                                <h1 class="fw-bold mb-0 text-black">Order Details</h1>
+                            </div>
+                            <hr class="my-4">
+                            <form asp-action="" method="post" enctype="multipart/form-data">
+                                <br />
+                                <div class="row mx-0 pb-3">
+                                    <div class="col-md-12 offset-md-2 px-1 ms-lg-0 ms-md-0">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"> </div>
+                                        <h5 class="text-danger text-md-start text-center">@ViewBag.message</h5>
+                                        <div class="form-group border-dark row">
+                                            <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                                                <h5 class="pt-lg-2"> <label asp-for="Name"></label></h5>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                                                <input type="hidden" asp-for="Id" />
+                                                <input asp-for="Name" class="form-control rounded-0 border-dark shadow-none" type="text" id="inputToUpper" onkeyup="myFunction()" />
+                                            </div>
+                                            <span asp-validation-for="Name" class="col-12 text-danger rounded-0 border-dark"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group border-dark row">
+                                            <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                                                <h5 class="pt-lg-2"> <label asp-for="PhoneNo"></label></h5>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                                                <input asp-for="PhoneNo" class="form-control rounded-0 border-dark shadow-none" type="text" id="inputToUpper" onkeyup="myFunction()" />
+                                            </div>
+                                            <span asp-validation-for="PhoneNo" class="col-12 text-danger rounded-0 border-dark"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group border-dark row">
+                                            <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                                                <h5 class="pt-lg-2"> <label asp-for="Address"></label></h5>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                                                <input asp-for="Address" class="form-control rounded-0 border-dark shadow-none" type="text" id="inputToUpper" onkeyup="myFunction()" />
+                                            </div>
+                                            <span asp-validation-for="Address" class="col-12 text-danger rounded-0 border-dark"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group border-dark row">
+                                            <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                                                <h5 class="pt-lg-2"> <label asp-for="Email"></label></h5>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                                                <input asp-for="Email" class="form-control rounded-0 border-dark shadow-none" type="text" id="inputToUpper" onkeyup="myFunction()" />
+                                            </div>
+                                            <span asp-validation-for="Email" class="col-12 text-danger rounded-0 border-dark"></span>
+                                        </div>
+                                        <br />
+                                        <div class="form-group border-dark row">
+                                            <div class="col-sm-12 col-md-8 col-lg-4 text-md-start text-center py-1">
+                                                <h5 class="pt-lg-2"> <label asp-for="OrderDate"></label></h5>
+                                            </div>
+                                            <div class="col-sm-12 col-md-12 col-lg-8 py-1">
+                                                <input asp-for="OrderDate" type="text" readonly="readonly" class="form-control rounded-0 border-dark shadow-none" />
+                                            </div>
+                                            <span asp-validation-for="OrderDate" class="col-12 text-danger rounded-0 border-dark"></span>
+                                        </div>
+                                        <br />
+                                    </div>
+                                </div>
+                            </form>
+                            <hr class="my-4">
+
+                            <div class="pt-5">
+                                <h6 class="mb-0">
+                                    <a asp-action="Cart" asp-controller="Home" class="btn-black btn-black1">Back to cart</a>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 rounded-0">
+                        <div class="p-5">
+                            <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                            <hr class="my-4">
+                            @foreach (var item in products)
+                            {
+                                <div class="d-flex justify-content-between pt-4 mb-1">
+                                    <h5 class="text-uppercase">@item.ProductName</h5>
+                                    <h5>@item.ProductPrice</h5>
+                                </div>
+                            }
+                            <hr class="my-4">
+                            <div class="d-flex justify-content-between mb-5">
+                                <h5 class="text-uppercase">Total items</h5>
+                                <h5>
+                                    @if (@count == 1)
+                                    {
+                                        <span> @count item </span>
+                                    }
+                                    else
+                                    {
+                                        <span> @count items </span>
+                                    }
+                                </h5>
+                            </div>
+                            <div class="d-flex justify-content-between mb-5">
+                                <h5 class="text-uppercase">Total price</h5>
+                                <h5>$ @products.Sum(c => c.ProductPrice)</h5>
+                            </div>
+                            <a asp-area="Customer" asp-action="Checkout" asp-controller="Order" class="btn-black btn-black1">Checkout</a>
+                            <input type="submit" value="Place Order" class="btn btn-success" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="form-outline mb-5">
+    <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+           value="1234 5678 9012 3457" minlength="19" maxlength="19" />
+    <label class="form-label" for="typeText">Card Number</label>
+</div>
+
+<div class="form-outline mb-5">
+    <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+           value="John Smith" />
+    <label class="form-label" for="typeName">Name on card</label>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-5">
+        <div class="form-outline">
+            <input type="text" id="typeExp" class="form-control form-control-lg" value="01/22"
+                   size="7" id="exp" minlength="7" maxlength="7" />
+            <label class="form-label" for="typeExp">Expiration</label>
+        </div>
+    </div>
+    <div class="col-md-6 mb-5">
+        <div class="form-outline">
+            <input type="password" id="typeText" class="form-control form-control-lg"
+                   value="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
+            <label class="form-label" for="typeText">Cvv</label>
+        </div>
+    </div>
+</div>
+
+<p class="mb-5">
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit <a href="#!">obcaecati sapiente</a>.
+</p>
+
+<button type="button" class="btn btn-primary btn-block btn-lg">Buy now</button>
+
+<h5 class="fw-bold mb-5" style="position: absolute; bottom: 0;">
+    <a href="#!"><i class="fas fa-angle-left me-2"></i>Back to shopping</a>
+</h5>
+
+
+
+
 
 @section Scripts{
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -29,11 +29,14 @@ namespace Shop1.Models
 
 
             [EmailAddress]
+            [Display(Name = "Email Address: ")]
             [Required(ErrorMessage = "E-mail input is required")]
             public string Email { get; set; }
 
+            [Display(Name = "Shipping Address: ")]
             public string Address { get; set; }
 
+            [Display(Name = "Order Date: ")]
             public DateTime OrderDate { get; set; }
 
             public virtual List<OrderDetails> OrderDetails { get; set; }

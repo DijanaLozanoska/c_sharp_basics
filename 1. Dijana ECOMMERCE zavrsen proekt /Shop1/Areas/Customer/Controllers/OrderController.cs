@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Shop1.Data;
 using Shop1.Models;
@@ -47,6 +48,20 @@ namespace Shop1.Areas
             HttpContext.Session.Set("products", new List<Product>());
             return View();
         }
+
+
+        public ActionResult Count()
+        {
+            int count = 0;
+            List<Product> productsc = HttpContext.Session.Get<List<Product>>("products");
+            if (productsc == null)
+            {
+                productsc = new List<Product>();
+            }
+            count = productsc.Count();
+            return View(count);
+        }
+
 
         public string GetOrderNo()
         {

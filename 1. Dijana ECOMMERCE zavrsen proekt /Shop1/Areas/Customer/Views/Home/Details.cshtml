@@ -76,9 +76,9 @@
                 <br />
                 <div class="profile pb-2 text-md-start text-center">
                     @if (product != null)
-                     {
+                    {
                         <a asp-area="Customer" asp-action="Delete" asp-controller="Home" asp-route-id="@Model.Id" class="btn-red btn-red1">REMOVE FROM CART</a>
-                     }
+                    }
                     else
                     {
                         <input type="submit" class="btn-black btn-black1" value="ADD TO CART" />

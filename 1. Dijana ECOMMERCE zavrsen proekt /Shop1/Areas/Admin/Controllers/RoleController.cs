@@ -50,7 +50,7 @@ namespace Shop1.Areas.Admin.Controllers
             var isExisting = await _roleManager.RoleExistsAsync(role.Name);
             if (isExisting)
             {
-                ViewBag.mgs = "This role already exists";
+                ViewBag.message = "This role already exists";
                 ViewBag.name = name;
                 return View();
             }
